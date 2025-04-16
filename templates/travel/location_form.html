@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5" style="max-width: 700px;">
+    <h2 class="mb-4 text-center">
+      {% if object %}Edit Location{% else %}Add New Location{% endif %}
+    </h2>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success w-100">
+        {% if object %}Update{% else %}Create{% endif %}
+      </button>
+    </form>
+  </div>
+{% endblock %}

@@ -1,9 +1,158 @@
-from msilib.schema import ListView
+from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from django.urls import reverse_lazy, reverse
+from django.views import generic
+from django.views.generic.edit import FormMixin
 
-from django.shortcuts import render
+from travel.forms import TouristRegistrationForm, LocationForm, LocationReviewForm, TouristUpdateForm
+from travel.models import Location, LocationReview, Country, Tourist
 
-from traveling.models import Location
+
+class HomeView(generic.TemplateView):
+    template_name = "home.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tourist_count"] = Tourist.objects.count()
+        context["location_count"] = Location.objects.count()
+        context["city_count"] = Location.objects.values("city").distinct().count()
+        return context
 
 
-class LocationListView(LoListView):
+class LocationListView(LoginRequiredMixin, generic.ListView):
     model = Location
+    template_name = "travel/location_list.html"
+    context_object_name = "locations"
+    paginate_by = 6
+
+    def get_queryset(self):
+        queryset = Location.objects.all().order_by("-views")
+        cities = self.request.GET.getlist("city")
+        if cities:
+            queryset = queryset.filter(city__in=cities)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["cities"] = (
+            Location.objects
+            .exclude(city__isnull=True)
+            .exclude(city__exact="")
+            .values_list("city", flat=True)
+            .distinct()
+            .order_by("city")
+        )
+        context["selected_cities"] = self.request.GET.getlist("city")
+        return context
+
+
+class LocationCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Location
+    form_class = LocationForm
+    template_name = "travel/location_form.html"
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.object.tourists.add(self.request.user)
+        return response
+
+    def get_success_url(self):
+        return reverse_lazy("travel:location-list")
+
+
+
+class LocationUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Location
+    form_class = LocationForm
+    template_name = "travel/location_form.html"
+    success_url = reverse_lazy("travel:location-list")
+
+
+class LocationDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Location
+    template_name = "travel/location_confirm_delete.html"
+    success_url = reverse_lazy("travel:location-list")
+
+
+class LocationDetailView(FormMixin, generic.DetailView):
+    model = Location
+    template_name = "travel/location_detail.html"
+    context_object_name = "location"
+    form_class = LocationReviewForm
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+        obj.views += 1
+        obj.save(update_fields=["views"])
+        return obj
+
+    def get_success_url(self):
+        return reverse("travel:location-detail", kwargs={"pk": self.object.pk})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["form"] = self.get_form()
+        context["reviews"] = LocationReview.objects.filter(location=self.object).order_by('-created_at')
+        return context
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.tourist = self.request.user
+            review.location = self.object
+            review.save()
+            return redirect(self.get_success_url())
+        return self.form_invalid(form)
+
+
+class LocationReviewCreateView(LoginRequiredMixin, generic.CreateView):
+    model = LocationReview
+    form_class = LocationReviewForm
+    template_name = "travel/location_review_form.html"
+
+    def form_valid(self, form):
+        form.instance.tourist = self.request.user
+        form.instance.location = Location.objects.get(pk=self.kwargs["pk"])
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("travel:location-detail", kwargs={"pk": self.kwargs["pk"]})
+
+
+class CountryListView(LoginRequiredMixin, generic.ListView):
+    model = Country
+    template_name = "travel/country_list.html"
+    context_object_name = "countries"
+
+
+class TouristListView(LoginRequiredMixin, generic.ListView):
+    model = Tourist
+    template_name = "travel/tourist_list.html"
+    context_object_name = "tourists"
+
+
+class TouristRegisterView(generic.CreateView):
+    model = Tourist
+    form_class = TouristRegistrationForm
+    template_name = "registration/register.html"
+    success_url = reverse_lazy("login")
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect(self.success_url)
+
+
+class TouristUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Tourist
+    form_class = TouristUpdateForm
+    template_name = "travel/tourist_form.html"
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_success_url(self):
+        return reverse_lazy("travel:tourists-list")

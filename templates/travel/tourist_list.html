@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Tourists</h2>
+    <div class="row">
+      {% for tourist in tourists %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">{{ tourist.first_name }} {{ tourist.last_name }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">@{{ tourist.username }}</h6>
+              {% if tourist.bio %}
+                <p class="card-text">{{ tourist.bio }}</p>
+              {% else %}
+                <p class="card-text text-muted">No bio available.</p>
+              {% endif %}
+              {% if tourist == user %}
+                <a href="{% url 'travel:tourists-update' %}" class="btn btn-sm btn-outline-primary">Edit Profile</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p>No tourists found.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

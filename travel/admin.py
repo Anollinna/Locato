@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import User
-from traveling.models import Country, Location, LocationReview,Tourist
+from travel.models import Country, Location, LocationReview,Tourist
 
 
 @admin.register(Location)

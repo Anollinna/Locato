@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container d-flex flex-column justify-content-end" style="min-height: 80vh;">
+  <div class="text-center mt-5">
+    <h1 class="mb-3">Welcome to Locato</h1>
+    <p class="lead mb-5">
+      Discover hidden gems, share unforgettable experiences.<br>
+      Our platform is designed for travelers and locals alike to explore fascinating destinations together.<br>
+      Whether you're planning your next adventure or simply reminiscing about a past trip,<br> you can browse unique locations,
+      leave reviews, and inspire others.
+    </p>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Tourists</h5>
+          <p class="card-text display-6">{{ tourist_count }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Locations</h5>
+          <p class="card-text display-6">{{ location_count }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Cities</h5>
+          <p class="card-text display-6">{{ city_count }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

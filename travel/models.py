@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.models import User, AbstractUser
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.db.models import UniqueConstraint, Avg
 from django_countries.fields import CountryField
@@ -37,7 +38,7 @@ class Country(models.Model):
         ordering = ("name", )
 
     def __str__(self):
-        return self.name
+        return f"{self.name.name} ({self.get_continent_display()})"
 
 
 class Location(models.Model):
@@ -49,7 +50,7 @@ class Location(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     views = models.PositiveIntegerField(default=0)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name="locations")
-    tourists = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="locations")
+    tourists = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="locations", blank=True)
 
     class Meta:
         ordering = ("name", "city", )
@@ -64,13 +65,15 @@ class Location(models.Model):
 class LocationReview(models.Model):
     tourist = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="reviews")
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="reviews")
-    rating = models.PositiveSmallIntegerField()
+    rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        UniqueConstraint(fields=["tourist", "location"], name="unique_location_review")
+        constraints = [
+            models.UniqueConstraint(fields=["tourist", "location"], name="unique_location_review")
+        ]
 
     def __str__(self):
         return f"{self.tourist.username}`s review of {self.location}"
