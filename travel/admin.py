@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from travel.models import Country, Location, LocationReview,Tourist
+from travel.models import Country, Location, LocationReview, Tourist, HomepageBanner
 
 
 @admin.register(Location)
@@ -27,3 +27,9 @@ class TouristAdmin(UserAdmin):
 class CountryAdmin(admin.ModelAdmin):
     list_display = ("name", "continent",)
     list_filter = ("continent",)
+
+
+@admin.register(HomepageBanner)
+class HomepageBannerAdmin(admin.ModelAdmin):
+    list_display = ("id", "uploaded_at")
+    ordering = ("-uploaded_at",)
