@@ -13,6 +13,7 @@ from travel.views import (
     TouristRegisterView,
     TouristDetailView,
     ToggleFavoriteView,
+    HomepageBannerUploadView,
 )
 
 urlpatterns = [
@@ -28,6 +29,7 @@ urlpatterns = [
     path("register/", TouristRegisterView.as_view(), name="register"),
     path("tourists/<int:pk>/", TouristDetailView.as_view(), name="tourists-detail"),
     path("locations/<int:pk>/toggle-favorite/", ToggleFavoriteView.as_view(), name="toggle-favorite"),
+    path("banners-upload/", HomepageBannerUploadView.as_view(), name="banner-upload"),
 ]
 
 app_name = "travel"

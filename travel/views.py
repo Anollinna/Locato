@@ -1,11 +1,17 @@
 from django.contrib.auth import login
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.views.generic.edit import FormMixin
-from travel.forms import TouristRegistrationForm, LocationForm, LocationReviewForm, TouristUpdateForm
-from travel.models import Location, LocationReview, Country, Tourist
+from travel.forms import (
+    TouristRegistrationForm,
+    LocationForm,
+    LocationReviewForm,
+    TouristUpdateForm,
+    HomepageBannerForm
+)
+from travel.models import Location, LocationReview, Country, Tourist, HomepageBanner
 
 
 class HomeView(generic.TemplateView):
@@ -16,6 +22,7 @@ class HomeView(generic.TemplateView):
         context["tourist_count"] = Tourist.objects.count()
         context["location_count"] = Location.objects.count()
         context["city_count"] = Location.objects.values("city").distinct().count()
+        context["banner"] = HomepageBanner.objects.order_by("-uploaded_at").first()
         return context
 
 
@@ -195,3 +202,13 @@ class ToggleFavoriteView(LoginRequiredMixin, generic.View):
         else:
             request.user.favorites.add(location)
         return redirect(request.META.get("HTTP_REFERER", "travel:location-list"))
+
+
+class HomepageBannerUploadView(LoginRequiredMixin, UserPassesTestMixin, generic.CreateView):
+    model = HomepageBanner
+    form_class = HomepageBannerForm
+    template_name = "travel/banner_upload.html"
+    success_url = "/"
+
+    def test_func(self):
+        return self.request.user.is_staff
