@@ -41,6 +41,14 @@
           {% endif %}
         </div>
       </div>
+      <form method="post" action="{% url 'travel:toggle-favorite' location.pk %}">
+        {% csrf_token %}
+        {% if location in user.favorites.all %}
+          <button type="submit" class="btn btn-outline-danger">Remove from Favorites</button>
+        {% else %}
+          <button type="submit" class="btn btn-outline-success">Add to Favorites</button>
+        {% endif %}
+      </form>
 
       {% if user.is_authenticated %}
       <div class="card mt-4">

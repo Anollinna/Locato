@@ -9,6 +9,7 @@ from django_countries.fields import CountryField
 class Tourist(AbstractUser):
     bio = models.TextField(blank=True, null=True)
     date_joined = models.DateField(auto_now_add=True)
+    favorites = models.ManyToManyField("Location", related_name="favorite_by", blank=True)
 
     class Meta:
         ordering = ("-date_joined",)

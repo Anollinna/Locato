@@ -1,10 +1,9 @@
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.views.generic.edit import FormMixin
-
 from travel.forms import TouristRegistrationForm, LocationForm, LocationReviewForm, TouristUpdateForm
 from travel.models import Location, LocationReview, Country, Tourist
 
@@ -156,3 +155,24 @@ class TouristUpdateView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         return reverse_lazy("travel:tourists-list")
+
+
+class TouristDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Tourist
+    template_name = "travel/tourist_detail.html"
+    context_object_name = "tourist"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["favorite_locations"] = self.object.favorites.all()
+        return context
+
+
+class ToggleFavoriteView(LoginRequiredMixin, generic.View):
+    def post(self, request, pk):
+        location = get_object_or_404(Location, pk=pk)
+        if location in request.user.favorites.all():
+            request.user.favorites.remove(location)
+        else:
+            request.user.favorites.add(location)
+        return redirect(request.META.get("HTTP_REFERER", "travel:location-list"))
