@@ -78,3 +78,11 @@ class LocationReview(models.Model):
 
     def __str__(self):
         return f"{self.tourist.username}`s review of {self.location}"
+
+
+class HomepageBanner(models.Model):
+    image = models.ImageField(upload_to="homepage_banners/")
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Banner uploaded at {self.uploaded_at}"
