@@ -117,6 +117,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "static"
+
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -133,13 +136,17 @@ LOGIN_URL = "login"
 
 LOGOUT_URL = "logout"
 
-# STORAGES = {
-#     "default": {
-#         "BACKEND": "storages.backends.dropbox.DropboxStorage",
-#         "OPTIONS": {
-#
-#         },
-#     },
-#     "staticfiles":"django.contrib.staticfiles.storage.StaticFilesStorage",
-#     },
-# }
+STORAGES = {
+    "default": {
+        "BACKEND": "Locato.drop_fix.PatchedDropboxStorage",
+        "OPTIONS": {
+            "oauth2_refresh_token": "5fDjf81O7m4AAAAAAAAAAZoBGwykNEdx4hg-ejLrHuLKlUbhrGiwa-AM5NA2i76-",
+            "app_key": "qjkef3chw8gjgrh",
+            "app_secret": "9436fnwyl5dwku7",
+            "root_path": "/DjangoMedia"
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}

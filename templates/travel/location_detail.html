@@ -11,8 +11,19 @@
         {% else %}
           <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="No image">
         {% endif %}
+
         <div class="card-body">
-          <h2 class="card-title">{{ location.name }}</h2>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h2 class="card-title mb-0">{{ location.name }}</h2>
+            <form method="post" action="{% url 'travel:toggle-favorite' location.pk %}" class="ml-auto">
+              {% csrf_token %}
+              {% if location in user.favorites.all %}
+                <button type="submit" class="btn btn-sm btn-outline-danger">Remove from Favorites</button>
+              {% else %}
+                <button type="submit" class="btn btn-sm btn-outline-success">Add to Favorites</button>
+              {% endif %}
+            </form>
+          </div>
           <h5 class="card-subtitle mb-2 text-muted">{{ location.city }}, {{ location.country.name }}</h5>
           <p class="card-text mt-3">{{ location.description }}</p>
           <p><strong>Created at:</strong> {{ location.created_at }}</p>
@@ -41,14 +52,6 @@
           {% endif %}
         </div>
       </div>
-      <form method="post" action="{% url 'travel:toggle-favorite' location.pk %}">
-        {% csrf_token %}
-        {% if location in user.favorites.all %}
-          <button type="submit" class="btn btn-outline-danger">Remove from Favorites</button>
-        {% else %}
-          <button type="submit" class="btn btn-outline-success">Add to Favorites</button>
-        {% endif %}
-      </form>
 
       {% if user.is_authenticated %}
       <div class="card mt-4">

@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.auth.models import User, AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from django.db.models import UniqueConstraint, Avg
+from django.db.models import Avg
 from django_countries.fields import CountryField
 
 

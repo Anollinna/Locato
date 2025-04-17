@@ -9,26 +9,115 @@
 
   <div class="row">
     <div class="col-md-3 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-header">
-          <strong>Filter by City</strong>
-        </div>
-        <form method="get">
-          <ul class="list-group list-group-flush">
-            {% for city in cities %}
-              <li class="list-group-item">
-                <label>
-                  <input type="checkbox" name="city" value="{{ city }}" {% if city in selected_cities %}checked{% endif %}>
-                  {{ city }}
-                </label>
-              </li>
-            {% endfor %}
-          </ul>
-          <div class="card-footer text-center">
-            <button type="submit" class="btn btn-sm btn-outline-primary">Apply Filters</button>
+      <form method="get">
+
+        <div class="card shadow-sm mb-3">
+          <div class="card-header">
+            <strong>Filter by Continent</strong>
           </div>
-        </form>
-      </div>
+          <div class="card-body overflow-auto" style="max-height: 200px;">
+            <div class="container-fluid">
+              <div class="row">
+
+                <div class="col-6 mb-2">
+                  <label class="form-check-label">
+                    <input class="form-check-input me-1" type="checkbox" name="continent" value="AF"
+                           {% if "AF" in selected_continents %}checked{% endif %}>
+                    Africa
+                  </label>
+                </div>
+                <div class="col-6 mb-2">
+                  <label class="form-check-label">
+                    <input class="form-check-input me-1" type="checkbox" name="continent" value="EU"
+                           {% if "EU" in selected_continents %}checked{% endif %}>
+                    Europe
+                  </label>
+                </div>
+
+                <div class="col-6 mb-2">
+                  <label class="form-check-label">
+                    <input class="form-check-input me-1" type="checkbox" name="continent" value="AS"
+                           {% if "AS" in selected_continents %}checked{% endif %}>
+                    Asia
+                  </label>
+                </div>
+                <div class="col-6 mb-2">
+                  <label class="form-check-label">
+                    <input class="form-check-input me-1" type="checkbox" name="continent" value="AU"
+                           {% if "AU" in selected_continents %}checked{% endif %}>
+                    Australia
+                  </label>
+                </div>
+
+                <div class="col-12 mb-2">
+                  <label class="form-check-label">
+                    <input class="form-check-input me-1" type="checkbox" name="continent" value="AN"
+                           {% if "AN" in selected_continents %}checked{% endif %}>
+                    Antarctica
+                  </label>
+                </div>
+                <div class="col-12 mb-2">
+                  <label class="form-check-label">
+                    <input class="form-check-input me-1" type="checkbox" name="continent" value="NA"
+                           {% if "NA" in selected_continents %}checked{% endif %}>
+                    North America
+                  </label>
+                </div>
+                <div class="col-12 mb-2">
+                  <label class="form-check-label">
+                    <input class="form-check-input me-1" type="checkbox" name="continent" value="SA"
+                           {% if "SA" in selected_continents %}checked{% endif %}>
+                    South America
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card shadow-sm mb-3">
+          <div class="card-header">
+            <strong>Filter by Country</strong>
+          </div>
+          <div class="overflow-auto" style="max-height: 160px;">
+            <ul class="list-group list-group-flush">
+              {% for country in countries %}
+                <li class="list-group-item">
+                  <label>
+                    <input type="checkbox" name="country" value="{{ country.id }}"
+                           {% if country.id|stringformat:"s" in selected_countries %}checked{% endif %}>
+                    {{ country.name.name }}
+                  </label>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="card shadow-sm mb-3">
+          <div class="card-header">
+            <strong>Filter by City</strong>
+          </div>
+          <div class="overflow-auto" style="max-height: 200px;">
+            <ul class="list-group list-group-flush">
+              {% for city in cities %}
+                <li class="list-group-item">
+                  <label>
+                    <input type="checkbox" name="city" value="{{ city }}"
+                           {% if city in selected_cities %}checked{% endif %}>
+                    {{ city }}
+                  </label>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-sm btn-outline-primary mt-2">Apply Filters</button>
+          <a href="{% url 'travel:location-list' %}" class="btn btn-sm btn-outline-secondary mt-2">Reset Filters</a>
+        </div>
+      </form>
     </div>
 
     <div class="col-md-9">
@@ -67,8 +156,8 @@
         {% empty %}
           <p>No locations yet.</p>
         {% endfor %}
-        {% include "includes/pagination.html" %}
       </div>
+      {% include "includes/pagination.html" %}
     </div>
   </div>
 </div>

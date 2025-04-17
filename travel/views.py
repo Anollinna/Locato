@@ -26,14 +26,24 @@ class LocationListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        queryset = Location.objects.all().order_by("-views")
+        queryset = Location.objects.select_related("country").all().order_by("-views")
+
         cities = self.request.GET.getlist("city")
+        countries = self.request.GET.getlist("country")
+        continents = self.request.GET.getlist("continent")
+
         if cities:
             queryset = queryset.filter(city__in=cities)
+        if countries:
+            queryset = queryset.filter(country__id__in=countries)
+        if continents:
+            queryset = queryset.filter(country__continent__in=continents)
+
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         context["cities"] = (
             Location.objects
             .exclude(city__isnull=True)
@@ -42,7 +52,16 @@ class LocationListView(LoginRequiredMixin, generic.ListView):
             .distinct()
             .order_by("city")
         )
+        context["countries"] = Country.objects.order_by("name")
+        context["continents"] = Country.Continent.choices
         context["selected_cities"] = self.request.GET.getlist("city")
+        context["selected_countries"] = self.request.GET.getlist("country")
+        context["selected_continents"] = self.request.GET.getlist("continent")
+        query_params = self.request.GET.copy()
+        if "page" in query_params:
+            query_params.pop("page")
+        context["query_params"] = query_params.urlencode()
+
         return context
 
 

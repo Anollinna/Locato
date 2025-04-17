@@ -18,6 +18,11 @@
               {% else %}
                 <p class="card-text text-muted">No bio available.</p>
               {% endif %}
+
+              <p class="card-text">
+                <strong>Favorite Locations:</strong> {{ tourist.favorites.count }}
+              </p>
+
               {% if tourist == user %}
                 <a href="{% url 'travel:tourists-update' %}" class="btn btn-sm btn-outline-primary">Edit Profile</a>
               {% endif %}
