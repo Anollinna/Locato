@@ -1,0 +1,1524 @@
+[
+  {
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+      "name": "Can add log entry",
+      "content_type": 1,
+      "codename": "add_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+      "name": "Can change log entry",
+      "content_type": 1,
+      "codename": "change_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+      "name": "Can delete log entry",
+      "content_type": 1,
+      "codename": "delete_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+      "name": "Can view log entry",
+      "content_type": 1,
+      "codename": "view_logentry"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+      "name": "Can add permission",
+      "content_type": 2,
+      "codename": "add_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+      "name": "Can change permission",
+      "content_type": 2,
+      "codename": "change_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+      "name": "Can delete permission",
+      "content_type": 2,
+      "codename": "delete_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+      "name": "Can view permission",
+      "content_type": 2,
+      "codename": "view_permission"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+      "name": "Can add group",
+      "content_type": 3,
+      "codename": "add_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+      "name": "Can change group",
+      "content_type": 3,
+      "codename": "change_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+      "name": "Can delete group",
+      "content_type": 3,
+      "codename": "delete_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+      "name": "Can view group",
+      "content_type": 3,
+      "codename": "view_group"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+      "name": "Can add content type",
+      "content_type": 4,
+      "codename": "add_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+      "name": "Can change content type",
+      "content_type": 4,
+      "codename": "change_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+      "name": "Can delete content type",
+      "content_type": 4,
+      "codename": "delete_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+      "name": "Can view content type",
+      "content_type": 4,
+      "codename": "view_contenttype"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+      "name": "Can add session",
+      "content_type": 5,
+      "codename": "add_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+      "name": "Can change session",
+      "content_type": 5,
+      "codename": "change_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+      "name": "Can delete session",
+      "content_type": 5,
+      "codename": "delete_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+      "name": "Can view session",
+      "content_type": 5,
+      "codename": "view_session"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+      "name": "Can add country",
+      "content_type": 6,
+      "codename": "add_country"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+      "name": "Can change country",
+      "content_type": 6,
+      "codename": "change_country"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+      "name": "Can delete country",
+      "content_type": 6,
+      "codename": "delete_country"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+      "name": "Can view country",
+      "content_type": 6,
+      "codename": "view_country"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+      "name": "Can add tourist",
+      "content_type": 7,
+      "codename": "add_tourist"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+      "name": "Can change tourist",
+      "content_type": 7,
+      "codename": "change_tourist"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+      "name": "Can delete tourist",
+      "content_type": 7,
+      "codename": "delete_tourist"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+      "name": "Can view tourist",
+      "content_type": 7,
+      "codename": "view_tourist"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+      "name": "Can add location",
+      "content_type": 8,
+      "codename": "add_location"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+      "name": "Can change location",
+      "content_type": 8,
+      "codename": "change_location"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+      "name": "Can delete location",
+      "content_type": 8,
+      "codename": "delete_location"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+      "name": "Can view location",
+      "content_type": 8,
+      "codename": "view_location"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+      "name": "Can add location review",
+      "content_type": 9,
+      "codename": "add_locationreview"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can change location review",
+      "content_type": 9,
+      "codename": "change_locationreview"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "Can delete location review",
+      "content_type": 9,
+      "codename": "delete_locationreview"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+      "name": "Can view location review",
+      "content_type": 9,
+      "codename": "view_locationreview"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+      "name": "Can add homepage banner",
+      "content_type": 10,
+      "codename": "add_homepagebanner"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+      "name": "Can change homepage banner",
+      "content_type": 10,
+      "codename": "change_homepagebanner"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+      "name": "Can delete homepage banner",
+      "content_type": 10,
+      "codename": "delete_homepagebanner"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+      "name": "Can view homepage banner",
+      "content_type": 10,
+      "codename": "view_homepagebanner"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+      "app_label": "admin",
+      "model": "logentry"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+      "app_label": "auth",
+      "model": "permission"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+      "app_label": "auth",
+      "model": "group"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+      "app_label": "contenttypes",
+      "model": "contenttype"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+      "app_label": "sessions",
+      "model": "session"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+      "app_label": "travel",
+      "model": "country"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+      "app_label": "travel",
+      "model": "tourist"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+      "app_label": "travel",
+      "model": "location"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+      "app_label": "travel",
+      "model": "locationreview"
+    }
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+      "app_label": "travel",
+      "model": "homepagebanner"
+    }
+  },
+  {
+    "model": "sessions.session",
+    "pk": "10fvjtrj10yplysa1oaa297yr9k8q86e",
+    "fields": {
+      "session_data": ".eJxVjMsOwiAQRf-FtSFQHmVcuvcbyAAzUjU0Ke3K-O_apAvd3nPOfYmI21rj1mmJUxFn4cXpd0uYH9R2UO7YbrPMc1uXKcldkQft8joXel4O9--gYq_fWqFlAwhjKAhc_DgQ6RwoUFbAGk1OSrOz2gMH5QYVLA_FpmwcKAgs3h_2Tjfr:1u5Z2E:jnuPWOx6YN6s4dkRKfZRX4bztMQwppddpjVF5F-iujY",
+      "expire_date": "2025-05-01T23:52:46.315Z"
+    }
+  },
+  {
+    "model": "accounts.tourist",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$MGhn0sDE3EHHvK2KLmCyWc$nPfg7M+o7A+KhhRql3XuVnykTVgmUDyyMNrdqCdj0o4=",
+      "last_login": "2025-04-16T15:50:53.566Z",
+      "is_superuser": false,
+      "username": "OliverBer",
+      "first_name": "Oliver",
+      "last_name": "Bearman",
+      "email": "oliver@admin.com",
+      "is_staff": false,
+      "is_active": true,
+      "bio": "",
+      "date_joined": "2025-04-16",
+      "groups": [],
+      "user_permissions": [],
+      "favorites": []
+    }
+  },
+  {
+    "model": "accounts.tourist",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$5B3fxBDe6nTUs6yeYMM5ro$aFcP2zk0egCF0Bv08ovFWEpeMCkHZdAQqNHDZAxIv6k=",
+      "last_login": "2025-04-16T18:38:27.276Z",
+      "is_superuser": false,
+      "username": "GeorRuss",
+      "first_name": "George",
+      "last_name": "Russell",
+      "email": "george@admin.com",
+      "is_staff": false,
+      "is_active": true,
+      "bio": "A passionate traveler and adventure seeker, I love exploring new cultures and discovering hidden gems around the world. From hiking through mountains to diving in crystal-clear waters, I’m always in search of new experiences to expand my horizons.",
+      "date_joined": "2025-04-16",
+      "groups": [],
+      "user_permissions": [],
+      "favorites": []
+    }
+  },
+  {
+    "model": "accounts.tourist",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$CthbzNd8njLzGRy8qS3L8y$XSGaIrU0IkgvhUDun6dDLe+JB65TYkDm1E808xbQ6DA=",
+      "last_login": "2025-04-16T16:02:12.611Z",
+      "is_superuser": false,
+      "username": "FernAlon",
+      "first_name": "Fernando",
+      "last_name": "Alonso",
+      "email": "fernando@admin.com",
+      "is_staff": false,
+      "is_active": true,
+      "bio": "",
+      "date_joined": "2025-04-16",
+      "groups": [],
+      "user_permissions": [],
+      "favorites": []
+    }
+  },
+  {
+    "model": "accounts.tourist",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$qMGlywPIbhjLepXkF2LOYA$OgVZifyAIQ8ZnMXAVvWjjJpK66s9PFOS6WItcnNTFQk=",
+      "last_login": "2025-04-17T15:47:53.843Z",
+      "is_superuser": false,
+      "username": "PieGas",
+      "first_name": "Pierre",
+      "last_name": "Gasly",
+      "email": "Pierre@admin.com",
+      "is_staff": false,
+      "is_active": true,
+      "bio": "An avid explorer with a love for nature, I find joy in immersing myself in local traditions and savoring unique cuisines. Whether wandering through bustling cities or relaxing on serene beaches, travel is my way of life.",
+      "date_joined": "2025-04-16",
+      "groups": [],
+      "user_permissions": [],
+      "favorites": [
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "model": "accounts.tourist",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$o6ZQdss0wy0HkudqersYRz$MliX/KFv0MjZNCi2GobBb39BjnmzWtWU3mbHKFDOjnk=",
+      "last_login": "2025-04-16T18:10:09.206Z",
+      "is_superuser": false,
+      "username": "EmilTer",
+      "first_name": "Emmi",
+      "last_name": "Terranio",
+      "email": "Emm@admin.com",
+      "is_staff": false,
+      "is_active": true,
+      "bio": "A curious soul who thrives on discovering the world’s wonders, I enjoy meeting new people and learning from different cultures. Travel is not just about visiting places—it’s about creating memories and stories to share.",
+      "date_joined": "2025-04-16",
+      "groups": [],
+      "user_permissions": [],
+      "favorites": []
+    }
+  },
+  {
+    "model": "accounts.tourist",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$Fvl32YmsnGhX6bknWPd7Z5$tdHUYT0Q6GUU59sO7Vn9ubgjNWw7vsNOJPFJewToHDE=",
+      "last_login": "2025-04-17T23:52:46.312Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@admin.net",
+      "is_staff": true,
+      "is_active": true,
+      "bio": null,
+      "date_joined": "2025-04-16",
+      "groups": [],
+      "user_permissions": [],
+      "favorites": []
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 1,
+    "fields": {
+      "name": "US",
+      "continent": "NA"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 2,
+    "fields": {
+      "name": "CN",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 3,
+    "fields": {
+      "name": "IN",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 4,
+    "fields": {
+      "name": "RU",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 5,
+    "fields": {
+      "name": "BR",
+      "continent": "SA"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 6,
+    "fields": {
+      "name": "ID",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 7,
+    "fields": {
+      "name": "PK",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 8,
+    "fields": {
+      "name": "NG",
+      "continent": "AF"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 9,
+    "fields": {
+      "name": "BD",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 10,
+    "fields": {
+      "name": "JP",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 11,
+    "fields": {
+      "name": "MX",
+      "continent": "NA"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 12,
+    "fields": {
+      "name": "PH",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 13,
+    "fields": {
+      "name": "ET",
+      "continent": "AF"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 14,
+    "fields": {
+      "name": "EG",
+      "continent": "AF"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 15,
+    "fields": {
+      "name": "VN",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 16,
+    "fields": {
+      "name": "CD",
+      "continent": "AF"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 17,
+    "fields": {
+      "name": "TR",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 18,
+    "fields": {
+      "name": "IR",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 19,
+    "fields": {
+      "name": "DE",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 20,
+    "fields": {
+      "name": "TH",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 21,
+    "fields": {
+      "name": "GB",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 22,
+    "fields": {
+      "name": "FR",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 23,
+    "fields": {
+      "name": "IT",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 24,
+    "fields": {
+      "name": "ZA",
+      "continent": "AF"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 25,
+    "fields": {
+      "name": "TZ",
+      "continent": "AF"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 26,
+    "fields": {
+      "name": "MM",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 27,
+    "fields": {
+      "name": "KR",
+      "continent": "AS"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 28,
+    "fields": {
+      "name": "CO",
+      "continent": "SA"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 29,
+    "fields": {
+      "name": "KE",
+      "continent": "AF"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 30,
+    "fields": {
+      "name": "ES",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 31,
+    "fields": {
+      "name": "AR",
+      "continent": "SA"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 32,
+    "fields": {
+      "name": "UA",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 33,
+    "fields": {
+      "name": "PL",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 34,
+    "fields": {
+      "name": "NL",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 35,
+    "fields": {
+      "name": "BE",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 36,
+    "fields": {
+      "name": "CH",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 37,
+    "fields": {
+      "name": "SE",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 38,
+    "fields": {
+      "name": "NO",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 39,
+    "fields": {
+      "name": "DK",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 40,
+    "fields": {
+      "name": "IE",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 41,
+    "fields": {
+      "name": "AT",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 42,
+    "fields": {
+      "name": "FI",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 43,
+    "fields": {
+      "name": "IS",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 44,
+    "fields": {
+      "name": "LU",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 45,
+    "fields": {
+      "name": "MT",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 46,
+    "fields": {
+      "name": "CY",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 47,
+    "fields": {
+      "name": "MD",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 48,
+    "fields": {
+      "name": "AL",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 49,
+    "fields": {
+      "name": "BA",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 50,
+    "fields": {
+      "name": "RS",
+      "continent": "EU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 51,
+    "fields": {
+      "name": "AU",
+      "continent": "AU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 52,
+    "fields": {
+      "name": "AQ",
+      "continent": "AN"
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 1,
+    "fields": {
+      "name": "Lviv Old Town",
+      "city": "Lviv",
+      "description": "Lviv's Old Town is a UNESCO World Heritage Site, known for its stunning architecture, cobbled streets, and charming squares. It offers a mix of Gothic, Renaissance, and Baroque styles, with attractions such as Vernisage and Rynok Square.",
+      "image": "images/002.jpg",
+      "created_at": "2025-04-16T11:49:42.978Z",
+      "updated_at": "2025-04-17T15:07:22.995Z",
+      "views": 7,
+      "country": 32,
+      "tourists": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 3,
+    "fields": {
+      "name": "Lviv Opera House",
+      "city": "Lviv",
+      "description": "The Lviv Opera House is one of the most beautiful theatres in Ukraine. It features stunning architecture and is home to world-class performances in opera, ballet, and classical music.",
+      "image": "images/001.jpg",
+      "created_at": "2025-04-16T11:56:11.371Z",
+      "updated_at": "2025-04-17T15:06:58.201Z",
+      "views": 70,
+      "country": 32,
+      "tourists": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 10,
+    "fields": {
+      "name": "The Church of St. George",
+      "city": "Lviv",
+      "description": "The Church of St. George, one of Lviv’s most revered landmarks, is an architectural masterpiece with its stunning frescoes and intricate carvings. The church is an excellent example of Ukrainian Baroque architecture.",
+      "image": "images/004.jpg",
+      "created_at": "2025-04-16T13:05:31.437Z",
+      "updated_at": "2025-04-17T15:08:11.086Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 12,
+    "fields": {
+      "name": "Potocki Palace",
+      "city": "Lviv",
+      "description": "Potocki Palace is a magnificent example of classical architecture in the heart of Lviv. Once a noble residence, it now hosts art exhibitions and is a peaceful retreat for visitors interested in Ukrainian history.",
+      "image": "images/006.jpg",
+      "created_at": "2025-04-16T16:30:23.692Z",
+      "updated_at": "2025-04-17T15:09:04.261Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 13,
+    "fields": {
+      "name": "Kyiv Pechersk Lavra",
+      "city": "Kyiv",
+      "description": "Kyiv Pechersk Lavra (Kiev Monastery of the Caves)\r\nA UNESCO World Heritage Site, Kyiv Pechersk Lavra is a historic Orthodox Christian monastery known for its golden-domed churches, ancient underground caves, and breathtaking views of the Dnipro River.",
+      "image": "images/008.jpg",
+      "created_at": "2025-04-16T16:34:46.232Z",
+      "updated_at": "2025-04-17T15:09:25.469Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 14,
+    "fields": {
+      "name": "Saint Sophia’s Cathedral",
+      "city": "Kyiv",
+      "description": "One of the city’s most iconic landmarks, Saint Sophia’s Cathedral boasts 11th-century mosaics and frescoes. It's a masterpiece of Byzantine architecture and an important spiritual and historical center.",
+      "image": "images/005.jpg",
+      "created_at": "2025-04-16T16:35:12.654Z",
+      "updated_at": "2025-04-17T15:09:42.935Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 16,
+    "fields": {
+      "name": "St. Andrew’s Church",
+      "city": "Kyiv",
+      "description": "This baroque beauty sits atop a hill overlooking the city. Designed by Italian architect Bartolomeo Rastrelli, St. Andrew’s Church is admired for its striking green-and-gold domes and panoramic views.",
+      "image": "images/007.jpg",
+      "created_at": "2025-04-16T16:36:19.774Z",
+      "updated_at": "2025-04-17T15:10:02.267Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 17,
+    "fields": {
+      "name": "Golden Gate of Kyiv",
+      "city": "Kyiv",
+      "description": "A reconstructed version of the original 11th-century gateway, the Golden Gate once served as the main entrance to ancient Kyiv. It now houses a small museum and offers insights into the city’s medieval past.",
+      "image": "images/003.jpg",
+      "created_at": "2025-04-16T16:36:44.106Z",
+      "updated_at": "2025-04-17T15:07:54.503Z",
+      "views": 4,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 20,
+    "fields": {
+      "name": "Mariyinsky Palace",
+      "city": "Kyiv",
+      "description": "A stunning example of 18th-century baroque architecture, Mariyinsky Palace serves as the ceremonial residence of the President of Ukraine. Surrounded by a lovely park, it’s a picturesque spot near the Parliament.",
+      "image": "images/009.jpg",
+      "created_at": "2025-04-16T16:37:39.704Z",
+      "updated_at": "2025-04-17T15:10:20.903Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 22,
+    "fields": {
+      "name": "Odesa Opera and Ballet Theater",
+      "city": "Odesa",
+      "description": "A masterpiece of architecture and culture, this historic theater is considered one of the most beautiful in Europe. Its rich interior and world-class performances attract visitors year-round.",
+      "image": "images/010.jpg",
+      "created_at": "2025-04-16T16:41:16.730Z",
+      "updated_at": "2025-04-17T15:10:42.546Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 25,
+    "fields": {
+      "name": "Odesa Catacombs",
+      "city": "Odesa",
+      "description": "A mysterious underground labyrinth stretching over 2,500 kilometers, the Odesa Catacombs have served as smuggling routes, WWII hideouts, and now a place of eerie exploration for curious tourists.",
+      "image": "images/011.jpg",
+      "created_at": "2025-04-16T16:42:31.337Z",
+      "updated_at": "2025-04-17T15:11:17.210Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 28,
+    "fields": {
+      "name": "Odesa Passage",
+      "city": "Odesa",
+      "description": "A stunning 19th-century shopping arcade with detailed sculptures and a glass roof. Odesa Passage combines shopping with architectural elegance, right in the city center.",
+      "image": "images/012.jpg",
+      "created_at": "2025-04-16T16:43:46.686Z",
+      "updated_at": "2025-04-17T15:11:36.043Z",
+      "views": 1,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 29,
+    "fields": {
+      "name": "Uzhhorod Castle",
+      "city": "Uzhhorod",
+      "description": "A medieval fortress overlooking the city, Uzhhorod Castle houses a local history museum and offers stunning views of the surrounding landscape. Its thick stone walls whisper tales of centuries past.",
+      "image": "images/013.jpg",
+      "created_at": "2025-04-16T16:44:50.988Z",
+      "updated_at": "2025-04-17T15:12:05.348Z",
+      "views": 1,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 31,
+    "fields": {
+      "name": "Transcarpathian Museum of Folk Architecture and Life",
+      "city": "Uzhhorod",
+      "description": "An open-air museum displaying traditional wooden houses, churches, and mills from the Carpathian region. It offers a glimpse into rural Ukrainian life centuries ago.",
+      "image": "images/014.jpg",
+      "created_at": "2025-04-16T16:45:32.409Z",
+      "updated_at": "2025-04-17T15:12:55.786Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 32,
+    "fields": {
+      "name": "Greek Catholic Cathedral (Holy Cross Cathedral)",
+      "city": "Uzhhorod",
+      "description": "A beautiful baroque-style cathedral standing on Castle Hill, it reflects the city’s religious diversity and rich architectural heritage.",
+      "image": "images/21211.jpg",
+      "created_at": "2025-04-16T16:46:06.606Z",
+      "updated_at": "2025-04-17T15:35:21.318Z",
+      "views": 1,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 33,
+    "fields": {
+      "name": "Korzo Street",
+      "city": "Uzhhorod",
+      "description": "The main pedestrian street in the heart of Uzhhorod, Korzo is filled with cozy cafes, boutique shops, and historical buildings. A great spot to soak in the local vibe.",
+      "image": "images/015.jpg",
+      "created_at": "2025-04-16T16:46:26.322Z",
+      "updated_at": "2025-04-17T15:27:10.732Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 35,
+    "fields": {
+      "name": "Mini-Sculpture Trail",
+      "city": "Uzhhorod",
+      "description": "Scattered throughout the city are tiny bronze sculptures representing local legends, historical figures, or playful symbols. Each one has its own story and invites exploration.",
+      "image": "images/12121.jpg",
+      "created_at": "2025-04-16T16:47:31.809Z",
+      "updated_at": "2025-04-17T15:36:29.712Z",
+      "views": 1,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 43,
+    "fields": {
+      "name": "Lubart’s Castle (Lutsk Castle)",
+      "city": "Lutsk",
+      "description": "One of the best-preserved medieval castles in Ukraine, dating back to the 14th century. With its impressive towers and museum exhibitions, it’s the crown jewel of the city.",
+      "image": "images/016.jpg",
+      "created_at": "2025-04-16T16:52:50.138Z",
+      "updated_at": "2025-04-17T15:27:49.602Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 44,
+    "fields": {
+      "name": "St. Peter and Paul Cathedral",
+      "city": "Lutsk",
+      "description": "A grand Baroque-style cathedral built by Jesuits in the 17th century. Its underground labyrinths and serene interior are both intriguing and beautiful.",
+      "image": "images/018.jpg",
+      "created_at": "2025-04-16T16:53:21.844Z",
+      "updated_at": "2025-04-17T15:28:19.613Z",
+      "views": 0,
+      "country": 32,
+      "tourists": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 49,
+    "fields": {
+      "name": "Mount Fuji Description",
+      "city": "Kawaguchiko",
+      "description": "Mount Fuji is Japan's highest and most iconic peak, renowned for its nearly perfect symmetrical shape. It stands as a symbol of beauty and tranquility, attracting travelers and climbers alike. The view of Fuji, especially during sunrise or sunset, offers a breathtaking and serene experience.",
+      "image": "images/65565.jpg",
+      "created_at": "2025-04-17T22:31:09.345Z",
+      "updated_at": "2025-04-17T23:14:09.771Z",
+      "views": 0,
+      "country": 10,
+      "tourists": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 50,
+    "fields": {
+      "name": "Ha Long Bay",
+      "city": "Ha Long City",
+      "description": "Ha Long Bay, a UNESCO World Heritage site, is a stunning natural wonder located in the northeast of Vietnam. The bay is known for its emerald waters and thousands of towering limestone islands topped with rainforests. Visitors can take boat tours through the bay to explore caves, grottoes, and floating fishing villages. The serene beauty of the bay makes it a must-visit destination for nature lovers and adventurers alike.",
+      "image": "images/оотло.jpg",
+      "created_at": "2025-04-17T22:38:19.375Z",
+      "updated_at": "2025-04-17T23:06:26.514Z",
+      "views": 1,
+      "country": 15,
+      "tourists": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 51,
+    "fields": {
+      "name": "Luxor",
+      "city": "Luxor",
+      "description": "Luxor, often referred to as the \"world's greatest open-air museum,\" is home to some of Egypt's most famous monuments. Located on the banks of the Nile, it is the site of the ancient city of Thebes, which was once the capital of the New Kingdom. Visitors can explore the Valley of the Kings, where many pharaohs, including Tutankhamun, were buried, and the massive Karnak Temple complex, known for its grand halls and towering columns. Luxor offers a fascinating glimpse into ancient Egyptian civilization, making it an essential destination for history lovers.",
+      "image": "images/455.jpg",
+      "created_at": "2025-04-17T22:39:35.044Z",
+      "updated_at": "2025-04-17T23:08:23.690Z",
+      "views": 0,
+      "country": 14,
+      "tourists": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 52,
+    "fields": {
+      "name": "Maasai Mara",
+      "city": "Narok",
+      "description": "Maasai Mara in Kenya is a world-renowned reserve, celebrated for its incredible biodiversity and annual wildebeest migration. This breathtaking safari destination allows travelers to witness the stunning beauty of the African savannah, where lions, elephants, giraffes, and cheetahs roam freely. Maasai Mara offers an authentic African experience with opportunities to explore the wilderness and learn about the Maasai people’s rich culture.",
+      "image": "images/54.jpg",
+      "created_at": "2025-04-17T22:44:05.973Z",
+      "updated_at": "2025-04-17T23:13:51.707Z",
+      "views": 0,
+      "country": 29,
+      "tourists": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 53,
+    "fields": {
+      "name": "Grand Canyon",
+      "city": "Arizona",
+      "description": "The Grand Canyon, located in Arizona, is one of the most iconic natural wonders of the world. Carved by the Colorado River over millions of years, its vast, awe-inspiring landscape stretches over 277 miles. The canyon’s unique rock formations and vibrant colors make it a popular destination for hiking, rafting, and photography. It’s a UNESCO World Heritage site and a must-see for anyone visiting the United States.",
+      "image": "images/ориоо.jpg",
+      "created_at": "2025-04-17T22:52:22.005Z",
+      "updated_at": "2025-04-17T23:03:53.128Z",
+      "views": 0,
+      "country": 1,
+      "tourists": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 54,
+    "fields": {
+      "name": "Chichen Itza",
+      "city": "Yucatan",
+      "description": "Chichen Itza is one of the most famous ancient Mayan cities located on the Yucatán Peninsula in Mexico. Known for its iconic pyramid, El Castillo, this archaeological site offers a glimpse into the advanced civilization of the Mayans. Visitors can explore the ruins, including the Temple of the Warriors, the Great Ball Court, and other stunning structures, all while learning about the rich history and culture that once thrived in this region. Chichen Itza is also one of the New Seven Wonders of the World, making it a must-visit for history enthusiasts.",
+      "image": "images/121154.jpg",
+      "created_at": "2025-04-17T22:53:42.826Z",
+      "updated_at": "2025-04-17T23:05:17.114Z",
+      "views": 0,
+      "country": 11,
+      "tourists": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 55,
+    "fields": {
+      "name": "Iguazu Falls",
+      "city": "Misiones",
+      "description": "Iguazu Falls, located on the border between Argentina and Brazil, is one of the largest and most spectacular waterfall systems in the world. The falls stretch across nearly 2 miles and consist of over 270 individual cascades, making it a breathtaking natural wonder. Visitors can explore the surrounding national park, hike along various trails, and experience the awe-inspiring views from platforms that bring you up close to the powerful waterfalls. Iguazu Falls is a UNESCO World Heritage site and an unforgettable destination for nature lovers.",
+      "image": "images/5451212.jpg",
+      "created_at": "2025-04-17T22:55:54.095Z",
+      "updated_at": "2025-04-17T23:04:43.500Z",
+      "views": 0,
+      "country": 31,
+      "tourists": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "travel.location",
+    "pk": 56,
+    "fields": {
+      "name": "Christ the Redeemer",
+      "city": "Rio de Janeiro",
+      "description": "Christ the Redeemer is an iconic statue of Jesus Christ located atop the Corcovado Mountain in Rio de Janeiro. Standing 98 feet tall, this monumental statue overlooks the city and offers one of the most stunning panoramic views in Brazil. It is recognized worldwide as a symbol of Christianity and one of the New Seven Wonders of the World. Visitors can take a scenic train ride or hike to the summit to marvel at the statue and enjoy breathtaking views of Rio de Janeiro, Sugarloaf Mountain, and the surrounding coastline.",
+      "image": "images/45445454.jpg",
+      "created_at": "2025-04-17T22:56:52.980Z",
+      "updated_at": "2025-04-17T23:04:08.862Z",
+      "views": 0,
+      "country": 5,
+      "tourists": [
+        6
+      ]
+    }
+  },
+  {
+    "model": "travel.locationreview",
+    "pk": 1,
+    "fields": {
+      "tourist": 5,
+      "location": 3,
+      "rating": 5,
+      "created_at": "2025-04-16T18:10:21.449Z",
+      "updated_at": "2025-04-16T18:10:21.449Z",
+      "comment": "An architectural gem in the heart of Lviv. The Opera House is not only beautiful outside but also hosts breathtaking performances. A must-see for any visitor!"
+    }
+  },
+  {
+    "model": "travel.locationreview",
+    "pk": 2,
+    "fields": {
+      "tourist": 2,
+      "location": 3,
+      "rating": 5,
+      "created_at": "2025-04-16T18:38:44.443Z",
+      "updated_at": "2025-04-16T18:38:44.443Z",
+      "comment": "\"The Lviv Opera House is a stunning piece of architecture and an amazing place to experience world-class performances. The acoustics are exceptional, and the interior design is breathtaking. A must-visit for any cultural enthusiast!\""
+    }
+  },
+  {
+    "model": "travel.locationreview",
+    "pk": 3,
+    "fields": {
+      "tourist": 4,
+      "location": 3,
+      "rating": 4,
+      "created_at": "2025-04-16T18:39:32.528Z",
+      "updated_at": "2025-04-16T18:39:32.528Z",
+      "comment": "I had the pleasure of attending a ballet performance at the Lviv Opera. The venue itself is gorgeous, and the performance was wonderful. However, the seating could be more comfortable. Still, a fantastic experience overall!"
+    }
+  },
+  {
+    "model": "accounts.homepagebanner",
+    "pk": 1,
+    "fields": {
+      "image": "homepage_banners/portugal.webp",
+      "uploaded_at": "2025-04-17T20:38:26.162Z"
+    }
+  },
+  {
+    "model": "accounts.homepagebanner",
+    "pk": 2,
+    "fields": {
+      "image": "homepage_banners/portugal.jpg",
+      "uploaded_at": "2025-04-17T21:00:46.446Z"
+    }
+  },
+  {
+    "model": "accounts.homepagebanner",
+    "pk": 3,
+    "fields": {
+      "image": "homepage_banners/_methode_times_prod_web_bin_da555640-d58b-4777-987e-da1f4165c453.jpg",
+      "uploaded_at": "2025-04-17T21:02:36.624Z"
+    }
+  },
+  {
+    "model": "accounts.homepagebanner",
+    "pk": 4,
+    "fields": {
+      "image": "homepage_banners/190417162012-10-earth-beautiful-places.jpg",
+      "uploaded_at": "2025-04-17T21:06:17.652Z"
+    }
+  },
+  {
+    "model": "accounts.homepagebanner",
+    "pk": 5,
+    "fields": {
+      "image": "homepage_banners\\portugal_l0lYPbM.jpg",
+      "uploaded_at": "2025-04-17T21:09:10.350Z"
+    }
+  }
+]
