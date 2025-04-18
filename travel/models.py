@@ -1,25 +1,8 @@
 from django.conf import settings
-from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.db.models import Avg
 from django_countries.fields import CountryField
-
-
-class Tourist(AbstractUser):
-    bio = models.TextField(blank=True, null=True)
-    date_joined = models.DateField(auto_now_add=True)
-    favorites = models.ManyToManyField(
-        "Location",
-        related_name="favorite_by",
-        blank=True
-    )
-
-    class Meta:
-        ordering = ("-date_joined",)
-
-    def __str__(self):
-        return f"{self.username}: ({self.first_name}, {self.last_name})"
 
 
 class Country(models.Model):
@@ -104,11 +87,3 @@ class LocationReview(models.Model):
 
     def __str__(self):
         return f"{self.tourist.username}`s review of {self.location}"
-
-
-class HomepageBanner(models.Model):
-    image = models.ImageField(upload_to="homepage_banners/")
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"Banner uploaded at {self.uploaded_at}"

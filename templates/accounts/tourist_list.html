@@ -8,7 +8,7 @@
         <div class="col-md-4 mb-4">
           <div class="card h-100">
             <div class="card-body">
-              <a href="{% url 'travel:tourists-detail' tourist.pk %}">
+              <a href="{% url 'accounts:tourists-detail' tourist.pk %}">
                 <h5 class="card-title">{{ tourist.first_name }} {{ tourist.last_name }}</h5>
               </a>
               <h6 class="card-subtitle mb-2 text-muted">@{{ tourist.username }}</h6>
@@ -24,7 +24,7 @@
               </p>
 
               {% if tourist == user %}
-                <a href="{% url 'travel:tourists-update' %}" class="btn btn-sm btn-outline-primary">Edit Profile</a>
+                <a href="{% url 'accounts:tourists-update' %}" class="btn btn-sm btn-outline-primary">Edit Profile</a>
               {% endif %}
             </div>
           </div>

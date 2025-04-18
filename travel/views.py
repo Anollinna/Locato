@@ -1,22 +1,17 @@
-from django.contrib.auth import login
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from django.views.generic.edit import FormMixin
+from accounts.models import Tourist, HomepageBanner
 from travel.forms import (
-    TouristRegistrationForm,
     LocationForm,
-    LocationReviewForm,
-    TouristUpdateForm,
-    HomepageBannerForm
+    LocationReviewForm
 )
 from travel.models import (
     Location,
     LocationReview,
-    Country,
-    Tourist,
-    HomepageBanner
+    Country
 )
 
 
@@ -159,53 +154,6 @@ class LocationReviewCreateView(LoginRequiredMixin, generic.CreateView):
         )
 
 
-class CountryListView(LoginRequiredMixin, generic.ListView):
-    model = Country
-    template_name = "travel/country_list.html"
-    context_object_name = "countries"
-
-
-class TouristListView(LoginRequiredMixin, generic.ListView):
-    model = Tourist
-    template_name = "travel/tourist_list.html"
-    context_object_name = "tourists"
-
-
-class TouristRegisterView(generic.CreateView):
-    model = Tourist
-    form_class = TouristRegistrationForm
-    template_name = "registration/register.html"
-    success_url = reverse_lazy("login")
-
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return redirect(self.success_url)
-
-
-class TouristUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = Tourist
-    form_class = TouristUpdateForm
-    template_name = "travel/tourist_form.html"
-
-    def get_object(self, queryset=None):
-        return self.request.user
-
-    def get_success_url(self):
-        return reverse_lazy("travel:tourists-list")
-
-
-class TouristDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Tourist
-    template_name = "travel/tourist_detail.html"
-    context_object_name = "tourist"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["favorite_locations"] = self.object.favorites.all()
-        return context
-
-
 class ToggleFavoriteView(LoginRequiredMixin, generic.View):
     def post(self, request, pk):
         location = get_object_or_404(Location, pk=pk)
@@ -218,15 +166,7 @@ class ToggleFavoriteView(LoginRequiredMixin, generic.View):
         )
 
 
-class HomepageBannerUploadView(
-    LoginRequiredMixin,
-    UserPassesTestMixin,
-    generic.CreateView
-):
-    model = HomepageBanner
-    form_class = HomepageBannerForm
-    template_name = "travel/banner_upload.html"
-    success_url = "/"
-
-    def test_func(self):
-        return self.request.user.is_staff
+class CountryListView(LoginRequiredMixin, generic.ListView):
+    model = Country
+    template_name = "travel/country_list.html"
+    context_object_name = "countries"
