@@ -398,6 +398,21 @@
       "name": "RS",
       "continent": "EU"
     }
+  },
+  {
+    "model": "travel.country",
+    "pk": 51,
+    "fields": {
+      "name": "AU",
+      "continent": "AU"
+    }
+  },
+  {
+    "model": "travel.country",
+    "pk": 52,
+    "fields": {
+      "name": "AQ",
+      "continent": "AN"
+    }
   }
 ]
-
