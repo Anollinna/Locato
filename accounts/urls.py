@@ -11,28 +11,28 @@ urlpatterns = [
     path(
         "tourists/",
         TouristListView.as_view(),
-         name="tourists-list"
+        name="tourists-list"
     ),
     path(
         "tourists/update/",
         TouristUpdateView.as_view(),
-         name="tourists-update"
+        name="tourists-update"
     ),
     path(
         "register/",
         TouristRegisterView.as_view(),
-         name="register"
+        name="register"
     ),
     path(
         "tourists/<int:pk>/",
-         TouristDetailView.as_view(),
-         name="tourists-detail"
+        TouristDetailView.as_view(),
+        name="tourists-detail"
     ),
 
     path(
         "banners-upload/",
         HomepageBannerUploadView.as_view(),
-         name="banner-upload"
+        name="banner-upload"
     ),
 ]
 

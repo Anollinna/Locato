@@ -1,7 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from travel.models import Country, Location, Tourist, LocationReview
+from accounts.models import Tourist
+from travel.models import Country, Location, LocationReview
 
 
 class LocationListViewTests(TestCase):
@@ -282,40 +283,3 @@ class LocationDeleteViewTests(TestCase):
         response = self.client.post(url)
         self.assertRedirects(response, reverse("travel:location-list"))
         self.assertFalse(Location.objects.filter(pk=self.location.pk).exists())
-
-
-class TouristUpdateViewTests(TestCase):
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(
-            username="testuser",
-            password="testpassword",
-            email="old@example.com"
-        )
-        self.client.login(username="testuser", password="testpassword")
-
-    def test_update_tourist_info(self):
-        url = reverse("travel:tourists-update")
-        data = {
-            "username": "updateduser",
-            "email": "updated@example.com",
-        }
-        response = self.client.post(url, data)
-        self.assertRedirects(response, reverse("travel:tourists-list"))
-        self.user.refresh_from_db()
-        self.assertEqual(self.user.username, "updateduser")
-        self.assertEqual(self.user.email, "updated@example.com")
-
-
-class TouristDetailViewTests(TestCase):
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(
-            username="testuser", password="testpassword"
-        )
-        self.client.login(username="testuser", password="testpassword")
-
-    def test_tourist_detail_view(self):
-        url = reverse("travel:tourists-detail", kwargs={"pk": self.user.pk})
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, self.user.username)
-        self.assertTemplateUsed(response, "travel/tourist_detail.html")

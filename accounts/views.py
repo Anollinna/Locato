@@ -41,7 +41,7 @@ class TouristUpdateView(LoginRequiredMixin, generic.UpdateView):
         return self.request.user
 
     def get_success_url(self):
-        return reverse_lazy("travel:tourists-list")
+        return reverse_lazy("accounts:tourists-list")
 
 
 class TouristDetailView(LoginRequiredMixin, generic.DetailView):

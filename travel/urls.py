@@ -14,42 +14,42 @@ urlpatterns = [
     path(
         "locations/",
         LocationListView.as_view(),
-         name="location-list"
+        name="location-list"
     ),
     path(
         "locations/create/",
         LocationCreateView.as_view(),
-         name="location-create"
+        name="location-create"
     ),
     path(
         "locations/<int:pk>/update/",
         LocationUpdateView.as_view(),
-         name="location-update"
+        name="location-update"
     ),
     path(
         "locations/<int:pk>/delete/",
         LocationDeleteView.as_view(),
-         name="location-delete"
+        name="location-delete"
     ),
     path(
         "locations/<int:pk>/",
         LocationDetailView.as_view(),
-         name="location-detail"
+        name="location-detail"
     ),
     path(
         "locations/<int:pk>/add-review/",
-         LocationReviewCreateView.as_view(),
-         name="location-review"
+        LocationReviewCreateView.as_view(),
+        name="location-review"
     ),
     path(
         "locations/<int:pk>/toggle-favorite/",
         ToggleFavoriteView.as_view(),
-         name="toggle-favorite"
+        name="toggle-favorite"
     ),
     path(
         "countries/",
         CountryListView.as_view(),
-         name="countries-list"
+        name="countries-list"
     ),
 ]
 
