@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-4$wl8(lzy4p_1*fhbaj*r*0&!p(cess#m=)w8(=h_iy3i!#$k2"
+SECRET_KEY = ("django-insecure-4$wl8"
+              "(lzy4p_1*fhbaj*r*0&!p(cess#m=)w8(=h_iy3i!#$k2")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -55,8 +56,7 @@ ROOT_URLCONF = "Locato.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates']
-        ,
+        "DIRS": [BASE_DIR / 'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -87,16 +87,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation."
+                "UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth."
+                "password_validation.MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth."
+                "password_validation.CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth."
+                "password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -141,7 +145,8 @@ STORAGES = {
     "default": {
         "BACKEND": "Locato.drop_fix.PatchedDropboxStorage",
         "OPTIONS": {
-            "oauth2_refresh_token": "5fDjf81O7m4AAAAAAAAAAZoBGwykNEdx4hg-ejLrHuLKlUbhrGiwa-AM5NA2i76-",
+            "oauth2_refresh_token": "5fDjf81O7m4AAAAAAAAAAZo"
+                                    "BGwykNEdx4hg-ejLrHuLKlUbhrGiwa-AM5NA2i76-",
             "app_key": "qjkef3chw8gjgrh",
             "app_secret": "9436fnwyl5dwku7",
             "root_path": "/DjangoMedia"

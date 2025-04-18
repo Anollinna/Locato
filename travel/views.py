@@ -11,7 +11,13 @@ from travel.forms import (
     TouristUpdateForm,
     HomepageBannerForm
 )
-from travel.models import Location, LocationReview, Country, Tourist, HomepageBanner
+from travel.models import (
+    Location,
+    LocationReview,
+    Country,
+    Tourist,
+    HomepageBanner
+)
 
 
 class HomeView(generic.TemplateView):
@@ -21,8 +27,10 @@ class HomeView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         context["tourist_count"] = Tourist.objects.count()
         context["location_count"] = Location.objects.count()
-        context["city_count"] = Location.objects.values("city").distinct().count()
-        context["banner"] = HomepageBanner.objects.order_by("-uploaded_at").first()
+        context["city_count"] = (Location.objects.
+                                 values("city").distinct().count())
+        context["banner"] = (HomepageBanner.objects.
+                             order_by("-uploaded_at").first())
         return context
 
 
@@ -33,7 +41,8 @@ class LocationListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        queryset = Location.objects.select_related("country").all().order_by("-views")
+        queryset = (Location.objects.
+                    select_related("country").all().order_by("-views"))
 
         cities = self.request.GET.getlist("city")
         countries = self.request.GET.getlist("country")
@@ -86,7 +95,6 @@ class LocationCreateView(LoginRequiredMixin, generic.CreateView):
         return reverse_lazy("travel:location-list")
 
 
-
 class LocationUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Location
     form_class = LocationForm
@@ -118,7 +126,8 @@ class LocationDetailView(FormMixin, generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["form"] = self.get_form()
-        context["reviews"] = LocationReview.objects.filter(location=self.object).order_by('-created_at')
+        context["reviews"] = LocationReview.objects.filter(
+            location=self.object).order_by('-created_at')
         return context
 
     def post(self, request, *args, **kwargs):
@@ -144,7 +153,10 @@ class LocationReviewCreateView(LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy("travel:location-detail", kwargs={"pk": self.kwargs["pk"]})
+        return reverse_lazy(
+            "travel:location-detail",
+            kwargs={"pk": self.kwargs["pk"]}
+        )
 
 
 class CountryListView(LoginRequiredMixin, generic.ListView):
@@ -201,10 +213,16 @@ class ToggleFavoriteView(LoginRequiredMixin, generic.View):
             request.user.favorites.remove(location)
         else:
             request.user.favorites.add(location)
-        return redirect(request.META.get("HTTP_REFERER", "travel:location-list"))
+        return redirect(
+            request.META.get("HTTP_REFERER", "travel:location-list")
+        )
 
 
-class HomepageBannerUploadView(LoginRequiredMixin, UserPassesTestMixin, generic.CreateView):
+class HomepageBannerUploadView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    generic.CreateView
+):
     model = HomepageBanner
     form_class = HomepageBannerForm
     template_name = "travel/banner_upload.html"

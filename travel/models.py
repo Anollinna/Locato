@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.db.models import Avg
@@ -9,7 +9,11 @@ from django_countries.fields import CountryField
 class Tourist(AbstractUser):
     bio = models.TextField(blank=True, null=True)
     date_joined = models.DateField(auto_now_add=True)
-    favorites = models.ManyToManyField("Location", related_name="favorite_by", blank=True)
+    favorites = models.ManyToManyField(
+        "Location",
+        related_name="favorite_by",
+        blank=True
+    )
 
     class Meta:
         ordering = ("-date_joined",)
@@ -50,8 +54,16 @@ class Location(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     views = models.PositiveIntegerField(default=0)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name="locations")
-    tourists = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="locations", blank=True)
+    country = models.ForeignKey(
+        Country,
+        on_delete=models.CASCADE,
+        related_name="locations"
+    )
+    tourists = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name="locations",
+        blank=True
+    )
 
     class Meta:
         ordering = ("name", "city", )
@@ -64,16 +76,30 @@ class Location(models.Model):
 
 
 class LocationReview(models.Model):
-    tourist = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="reviews")
-    location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="reviews")
-    rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    tourist = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="reviews"
+    )
+    location = models.ForeignKey(
+        Location,
+        on_delete=models.CASCADE,
+        related_name="reviews"
+    )
+    rating = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1),
+                    MaxValueValidator(5)]
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=["tourist", "location"], name="unique_location_review")
+            models.UniqueConstraint(
+                fields=["tourist", "location"],
+                name="unique_location_review"
+            )
         ]
 
     def __str__(self):

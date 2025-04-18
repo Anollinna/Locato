@@ -7,16 +7,31 @@ from travel.models import Country, Location, Tourist, LocationReview
 class LocationListViewTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = Tourist.objects.create_user(username="testuser", password="password123")
+        cls.user = Tourist.objects.create_user(
+            username="testuser",
+            password="password123"
+        )
         cls.country1 = Country.objects.create(name="UA", continent="EU")
         cls.country2 = Country.objects.create(name="CA", continent="NA")
 
         cls.location1 = Location.objects.create(
-            name="Kyiv Castle", city="Kyiv", description="Historic castle in Kyiv.", country=cls.country1)
+            name="Kyiv Castle",
+            city="Kyiv",
+            description="Historic castle in Kyiv.",
+            country=cls.country1
+        )
         cls.location2 = Location.objects.create(
-            name="Lviv Opera", city="Lviv", description="Beautiful opera house.", country=cls.country1)
+            name="Lviv Opera",
+            city="Lviv",
+            description="Beautiful opera house.",
+            country=cls.country1
+        )
         cls.location3 = Location.objects.create(
-            name="CN Tower", city="Toronto", description="Tall tower in Canada.", country=cls.country2)
+            name="CN Tower",
+            city="Toronto",
+            description="Tall tower in Canada.",
+            country=cls.country2
+        )
 
     def setUp(self):
         self.client.login(username="testuser", password="password123")
@@ -33,18 +48,21 @@ class LocationListViewTests(TestCase):
         self.assertContains(response, "CN Tower")
 
     def test_filter_by_city(self):
-        response = self.client.get(reverse("travel:location-list") + "?city=Kyiv")
+        response = self.client.get(
+            reverse("travel:location-list") + "?city=Kyiv")
         self.assertContains(response, "Kyiv Castle")
         self.assertNotContains(response, "Lviv Opera")
         self.assertNotContains(response, "CN Tower")
 
     def test_filter_by_country(self):
-        response = self.client.get(reverse("travel:location-list") + f"?country={self.country2.pk}")
+        response = self.client.get(reverse(
+            "travel:location-list") + f"?country={self.country2.pk}")
         self.assertContains(response, "CN Tower")
         self.assertNotContains(response, "Kyiv Castle")
 
     def test_filter_by_continent(self):
-        response = self.client.get(reverse("travel:location-list") + "?continent=EU")
+        response = self.client.get(reverse(
+            "travel:location-list") + "?continent=EU")
         self.assertContains(response, "Kyiv Castle")
         self.assertContains(response, "Lviv Opera")
         self.assertNotContains(response, "CN Tower")
@@ -53,8 +71,14 @@ class LocationListViewTests(TestCase):
 class LocationDetailViewTests(TestCase):
 
     def setUp(self):
-        self.user = Tourist.objects.create_user(username="testuser", password="testpassword")
-        self.country = Country.objects.create(name="Country", continent=Country.Continent.EUROPE)
+        self.user = Tourist.objects.create_user(
+            username="testuser",
+            password="testpassword"
+        )
+        self.country = Country.objects.create(
+            name="Country",
+            continent=Country.Continent.EUROPE
+        )
         self.location = Location.objects.create(
             name="Test Location",
             city="Test City",
@@ -65,44 +89,81 @@ class LocationDetailViewTests(TestCase):
 
     def test_add_review(self):
         data = {"rating": 4, "comment": "Nice place!"}
-        response = self.client.post(reverse("travel:location-detail", args=[self.location.pk]), data)
-        self.assertRedirects(response, reverse("travel:location-detail", args=[self.location.pk]))
-        self.assertTrue(LocationReview.objects.filter(comment="Nice place!").exists())
+        response = self.client.post(reverse("travel:location-detail",
+                                            args=[self.location.pk]), data)
+        self.assertRedirects(response, reverse("travel:location-detail",
+                                               args=[self.location.pk]))
+        self.assertTrue(
+            LocationReview.objects.filter(comment="Nice place!").exists())
 
     def test_add_multiple_reviews(self):
         data1 = {"rating": 4, "comment": "Nice place!"}
-        response1 = self.client.post(reverse("travel:location-detail", args=[self.location.pk]), data1)
-        self.assertRedirects(response1, reverse("travel:location-detail", args=[self.location.pk]))
-        self.assertEqual(LocationReview.objects.filter(location=self.location, tourist=self.user).count(), 1)
+        response1 = self.client.post(reverse("travel:location-detail",
+                                             args=[self.location.pk]), data1)
+        self.assertRedirects(response1,
+                             reverse("travel:location-detail",
+                                     args=[self.location.pk]))
+        self.assertEqual(
+            LocationReview.objects.filter(location=self.location,
+                                          tourist=self.user).count(), 1)
         data2 = {"rating": 5, "comment": "Amazing experience!"}
-        if not LocationReview.objects.filter(location=self.location, tourist=self.user).exists():
-            response2 = self.client.post(reverse("travel:location-detail", args=[self.location.pk]), data2)
-            self.assertRedirects(response2, reverse("travel:location-detail", args=[self.location.pk]))
+        if not LocationReview.objects.filter(
+                location=self.location,
+                tourist=self.user).exists():
+            response2 = self.client.post(
+                reverse("travel:location-detail",
+                        args=[self.location.pk]), data2)
+            self.assertRedirects(
+                response2,
+                reverse("travel:location-detail",
+                        args=[self.location.pk])
+            )
         else:
-            response2 = self.client.get(reverse("travel:location-detail", args=[self.location.pk]))
-        self.assertEqual(LocationReview.objects.filter(location=self.location, tourist=self.user).count(), 1)
+            response2 = self.client.get(
+                reverse("travel:location-detail",
+                        args=[self.location.pk])
+            )
+        self.assertEqual(
+            LocationReview.objects.filter(
+                location=self.location,
+                tourist=self.user).count(),
+            1
+        )
 
 
 class ToggleFavoriteViewTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = Tourist.objects.create_user(username="testuser", password="password123")
+        cls.user = Tourist.objects.create_user(
+            username="testuser",
+            password="password123"
+        )
         cls.country = Country.objects.create(name="UA", continent="EU")
         cls.location = Location.objects.create(
-            name="Kyiv Castle", city="Kyiv", description="Historic castle in Kyiv.", country=cls.country)
+            name="Kyiv Castle",
+            city="Kyiv",
+            description="Historic castle in Kyiv.",
+            country=cls.country
+        )
 
     def setUp(self):
         self.client.login(username="testuser", password="password123")
 
     def test_add_to_favorites(self):
-        response = self.client.post(reverse("travel:toggle-favorite", args=[self.location.pk]))
+        response = self.client.post(
+            reverse("travel:toggle-favorite",
+                    args=[self.location.pk])
+        )
         self.assertRedirects(response, reverse("travel:location-list"))
         self.user.refresh_from_db()
         self.assertIn(self.location, self.user.favorites.all())
 
     def test_remove_from_favorites(self):
         self.user.favorites.add(self.location)
-        response = self.client.post(reverse("travel:toggle-favorite", args=[self.location.pk]))
+        response = self.client.post(
+            reverse("travel:toggle-favorite",
+                    args=[self.location.pk])
+        )
         self.assertRedirects(response, reverse("travel:location-list"))
         self.user.refresh_from_db()
         self.assertNotIn(self.location, self.user.favorites.all())
@@ -111,7 +172,10 @@ class ToggleFavoriteViewTests(TestCase):
 class LocationCreateViewTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = Tourist.objects.create_user(username="testuser", password="password123")
+        cls.user = Tourist.objects.create_user(
+            username="testuser",
+            password="password123"
+        )
         cls.country = Country.objects.create(name="UA", continent="EU")
 
     def setUp(self):
@@ -153,16 +217,26 @@ class LocationCreateViewTests(TestCase):
 class LocationUpdateViewTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = Tourist.objects.create_user(username="testuser", password="password123")
+        cls.user = Tourist.objects.create_user(
+            username="testuser",
+            password="password123"
+        )
         cls.country = Country.objects.create(name="UA", continent="EU")
         cls.location = Location.objects.create(
-            name="Kyiv Castle", city="Kyiv", description="Historic castle in Kyiv.", country=cls.country)
+            name="Kyiv Castle",
+            city="Kyiv",
+            description="Historic castle in Kyiv.",
+            country=cls.country
+        )
 
     def setUp(self):
         self.client.login(username="testuser", password="password123")
 
     def test_location_update_view_status_code(self):
-        response = self.client.get(reverse("travel:location-update", args=[self.location.pk]))
+        response = self.client.get(
+            reverse("travel:location-update",
+                    args=[self.location.pk])
+        )
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "travel/location_form.html")
 
@@ -173,7 +247,11 @@ class LocationUpdateViewTests(TestCase):
             "description": "Updated description.",
             "country": self.country.pk
         }
-        response = self.client.post(reverse("travel:location-update", args=[self.location.pk]), data)
+        response = self.client.post(
+            reverse("travel:location-update",
+                    args=[self.location.pk]),
+            data
+        )
         self.location.refresh_from_db()
         self.assertRedirects(response, reverse("travel:location-list"))
         self.assertEqual(self.location.name, "Updated Kyiv Castle")
@@ -184,7 +262,10 @@ class LocationDeleteViewTests(TestCase):
         self.user = get_user_model().objects.create_user(
             username="testuser", password="testpassword"
         )
-        self.country = Country.objects.create(name="Test Country", continent="EU")
+        self.country = Country.objects.create(
+            name="Test Country",
+            continent="EU"
+        )
         self.location = Location.objects.create(
             name="Test Location",
             description="A test location",
@@ -194,7 +275,10 @@ class LocationDeleteViewTests(TestCase):
         self.client.login(username="testuser", password="testpassword")
 
     def test_delete_location(self):
-        url = reverse("travel:location-delete", kwargs={"pk": self.location.pk})
+        url = reverse(
+            "travel:location-delete",
+            kwargs={"pk": self.location.pk}
+        )
         response = self.client.post(url)
         self.assertRedirects(response, reverse("travel:location-list"))
         self.assertFalse(Location.objects.filter(pk=self.location.pk).exists())
@@ -203,7 +287,9 @@ class LocationDeleteViewTests(TestCase):
 class TouristUpdateViewTests(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create_user(
-            username="testuser", password="testpassword", email="old@example.com"
+            username="testuser",
+            password="testpassword",
+            email="old@example.com"
         )
         self.client.login(username="testuser", password="testpassword")
 
