@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -142,15 +143,16 @@ LOGIN_URL = "login"
 
 LOGOUT_URL = "logout"
 
+load_dotenv()
+
 STORAGES = {
     "default": {
         "BACKEND": "Locato.drop_fix.PatchedDropboxStorage",
         "OPTIONS": {
-            "oauth2_refresh_token": "5fDjf81O7m4AAAAAAAAAAZo"
-                                    "BGwykNEdx4hg-ejLrHuLKlUbhrGiwa-AM5NA2i76-",
-            "app_key": "qjkef3chw8gjgrh",
-            "app_secret": "9436fnwyl5dwku7",
-            "root_path": "/DjangoMedia"
+            "oauth2_refresh_token": os.getenv("DROPBOX_REFRESH_TOKEN"),
+            "app_key": os.getenv("DROPBOX_APP_KEY"),
+            "app_secret": os.getenv("DROPBOX_APP_SECRET"),
+            "root_path": os.getenv("DROPBOX_ROOT_PATH", "/DjangoMedia")
         },
     },
     "staticfiles": {
