@@ -16,7 +16,8 @@ Password: 121748pie
 
 - Python 3.13
 - Django 5.x
-- SQLite 
+- SQLite
+- Pillow — image processing 
 
 ## How to Run the Project Locally
 
@@ -28,6 +29,11 @@ source venv/bin/activate       # On Windows: venv\Scripts\activate
 ### 2.Install dependencies:
 ```text
 pip install -r requirements.txt
+```
+Make sure that Pillow is included in requirements.txt. If not, run:
+```text
+pip install Pillow
+pip freeze > requirements.txt
 ```
 ### 3.Apply database migrations:
 ```text
