@@ -57,3 +57,6 @@ python manage.py runserver
 ```text
 http://127.0.0.1:8000/
 ```
+## Development
+- **Run tests:** ` python manage.py test`
+- **Check code style:** ` flake8`
