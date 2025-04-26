@@ -6,6 +6,7 @@ from travel.views import (
     LocationDeleteView,
     LocationDetailView,
     LocationReviewCreateView,
+    LocationReviewDeleteView,
     ToggleFavoriteView,
     CountryListView,
 )
@@ -40,6 +41,11 @@ urlpatterns = [
         "locations/<int:pk>/add-review/",
         LocationReviewCreateView.as_view(),
         name="location-review"
+    ),
+    path(
+        "review/<int:pk>/delete/",
+        LocationReviewDeleteView.as_view(),
+        name="review-delete"
     ),
     path(
         "locations/<int:pk>/toggle-favorite/",

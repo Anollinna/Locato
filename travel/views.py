@@ -1,7 +1,8 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import generic
+from django.views.generic import DeleteView
 from django.views.generic.edit import FormMixin
 from accounts.models import Tourist, HomepageBanner
 from travel.forms import (
@@ -152,6 +153,18 @@ class LocationReviewCreateView(LoginRequiredMixin, generic.CreateView):
             "travel:location-detail",
             kwargs={"pk": self.kwargs["pk"]}
         )
+
+
+class LocationReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = LocationReview
+    template_name = "travel/location_review_confirm_delete.html"
+
+    def get_success_url(self):
+        return reverse_lazy("travel:location-detail", kwargs={"pk": self.object.location.pk})
+
+    def test_func(self):
+        review = self.get_object()
+        return self.request.user == review.tourist or self.request.user.is_staff
 
 
 class ToggleFavoriteView(LoginRequiredMixin, generic.View):
