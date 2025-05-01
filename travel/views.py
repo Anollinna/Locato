@@ -63,7 +63,9 @@ class LocationListView(LoginRequiredMixin, generic.ListView):
         selected_countries = self.request.GET.getlist("country")
 
         if selected_continents:
-            countries = Country.objects.filter(continent__in=selected_continents).order_by("name")
+            countries = Country.objects.filter(
+                continent__in=selected_continents
+            ).order_by("name")
         else:
             countries = Country.objects.all().order_by("name")
 
@@ -78,7 +80,9 @@ class LocationListView(LoginRequiredMixin, generic.ListView):
             )
         elif selected_continents:
             cities = (
-                Location.objects.filter(country__continent__in=selected_continents)
+                Location.objects.filter(
+                    country__continent__in=selected_continents
+                )
                 .exclude(city__isnull=True)
                 .exclude(city__exact="")
                 .values_list("city", flat=True)
@@ -189,16 +193,26 @@ class LocationReviewCreateView(LoginRequiredMixin, generic.CreateView):
         )
 
 
-class LocationReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class LocationReviewDeleteView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    DeleteView
+):
     model = LocationReview
     template_name = "travel/location_review_confirm_delete.html"
 
     def get_success_url(self):
-        return reverse_lazy("travel:location-detail", kwargs={"pk": self.object.location.pk})
+        return reverse_lazy(
+            "travel:location-detail",
+            kwargs={"pk": self.object.location.pk}
+        )
 
     def test_func(self):
         review = self.get_object()
-        return self.request.user == review.tourist or self.request.user.is_staff
+        return (
+                self.request.user == review.tourist or
+                self.request.user.is_staff
+        )
 
 
 class ToggleFavoriteView(LoginRequiredMixin, generic.View):
