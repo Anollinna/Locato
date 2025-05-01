@@ -7,7 +7,7 @@
         <img src="{{ banner.image.url }}" alt="Homepage Banner" class="img-fluid w-100" style="object-fit: cover; height: 100vh;">
     </div>
 
-    <div class="container d-flex flex-column justify-content-end" style="min-height: 80vh; position: relative;">
+    <div class="container d-flex flex-column justify-content-end" style="height: 100vh; position: relative; z-index: 1; padding-bottom: 13vh;">
         {% if user.is_staff %}
         <div style="position: absolute; top: 20px; right: 20px; z-index: 10;">
             <a href="{% url 'accounts:banner-upload' %}" class="btn btn-sm btn-outline-secondary">
