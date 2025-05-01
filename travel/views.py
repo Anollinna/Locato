@@ -37,8 +37,11 @@ class LocationListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        queryset = (Location.objects.
-                    select_related("country").all().order_by("-views"))
+        queryset = (
+            Location.objects.select_related("country")
+            .all()
+            .order_by("-views")
+        )
 
         cities = self.request.GET.getlist("city")
         countries = self.request.GET.getlist("country")
@@ -47,7 +50,7 @@ class LocationListView(LoginRequiredMixin, generic.ListView):
         if cities:
             queryset = queryset.filter(city__in=cities)
         if countries:
-            queryset = queryset.filter(country__id__in=countries)
+            queryset = queryset.filter(country_id__in=countries)
         if continents:
             queryset = queryset.filter(country__continent__in=continents)
 
@@ -56,19 +59,50 @@ class LocationListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context["cities"] = (
-            Location.objects
-            .exclude(city__isnull=True)
-            .exclude(city__exact="")
-            .values_list("city", flat=True)
-            .distinct()
-            .order_by("city")
-        )
-        context["countries"] = Country.objects.order_by("name")
+        selected_continents = self.request.GET.getlist("continent")
+        selected_countries = self.request.GET.getlist("country")
+
+        if selected_continents:
+            countries = Country.objects.filter(continent__in=selected_continents).order_by("name")
+        else:
+            countries = Country.objects.all().order_by("name")
+
+        if selected_countries:
+            cities = (
+                Location.objects.filter(country__id__in=selected_countries)
+                .exclude(city__isnull=True)
+                .exclude(city__exact="")
+                .values_list("city", flat=True)
+                .distinct()
+                .order_by("city")
+            )
+        elif selected_continents:
+            cities = (
+                Location.objects.filter(country__continent__in=selected_continents)
+                .exclude(city__isnull=True)
+                .exclude(city__exact="")
+                .values_list("city", flat=True)
+                .distinct()
+                .order_by("city")
+            )
+        else:
+            cities = (
+                Location.objects
+                .exclude(city__isnull=True)
+                .exclude(city__exact="")
+                .values_list("city", flat=True)
+                .distinct()
+                .order_by("city")
+            )
+
+        context["cities"] = cities
+        context["countries"] = countries
         context["continents"] = Country.Continent.choices
+
         context["selected_cities"] = self.request.GET.getlist("city")
-        context["selected_countries"] = self.request.GET.getlist("country")
-        context["selected_continents"] = self.request.GET.getlist("continent")
+        context["selected_countries"] = selected_countries
+        context["selected_continents"] = selected_continents
+
         query_params = self.request.GET.copy()
         if "page" in query_params:
             query_params.pop("page")
