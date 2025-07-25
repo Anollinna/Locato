@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-5" style="max-width: 600px;">
+    <h2 class="mb-4 text-center">Delete Location</h2>
+
+    <p class="text-center">Are you sure you want to delete the location <strong>"{{ object.name }}"</strong> from {{ object.city }}?</p>
+
+    <form method="post" class="text-center">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Yes, delete</button>
+      <a href="{% url 'travel:location-list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3 class="card-title mb-3">{{ tourist.username }}</h3>
+      {% if tourist.bio %}
+        <p class="card-text"><strong>Bio:</strong> {{ tourist.bio }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="mb-0">Favorite Locations</h4>
+    </div>
+    <div class="card-body p-0">
+      {% if favorite_locations %}
+        <table class="table mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Name</th>
+              <th>Country</th>
+              <th>City</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for location in favorite_locations %}
+              <tr>
+                <td>
+                  <a href="{% url 'travel:location-detail' location.pk %}">
+                    {{ location.name }}
+                  </a>
+                </td>
+                <td>{{ location.country.name }}</td>
+                <td>{{ location.city }}</td>
+                <td>
+                  {% if request.user == tourist %}
+                    <form method="post" action="{% url 'travel:toggle-favorite' location.pk %}">
+                      {% csrf_token %}
+                      <button class="btn btn-sm btn-outline-danger" type="submit">Remove</button>
+                    </form>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <div class="p-3">
+          <p class="mb-0">You have no favorite locations yet.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
